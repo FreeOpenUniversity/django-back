@@ -1,17 +1,26 @@
 
+
 from . import models
 from . import serializers
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets, permissions,status
+from rest_framework.response import Response
 
 
+def create(self, request, *args, **kwargs):
+    serializer = self.get_serializer(data=request.data, many=isinstance(request.data,list))
+    serializer.is_valid(raise_exception=True)
 
+    self.perform_create(serializer)
+    headers = self.get_success_headers(serializer.data)
+    return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 class BookViewSet(viewsets.ModelViewSet):
     """ViewSet for the Book class"""
 
     queryset = models.Book.objects.all()
     serializer_class = serializers.BookSerializer
     permission_classes = [permissions.IsAuthenticated]
-
+    create = create
+    filterset_fields = "__all__"
 
 class CategoryViewSet(viewsets.ModelViewSet):
     """ViewSet for the Category class"""
