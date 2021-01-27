@@ -18,7 +18,7 @@ class BookViewSet(viewsets.ModelViewSet):
 
     queryset = models.Book.objects.all()
     serializer_class = serializers.BookSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
     create = create
     filterset_fields = "__all__"
 
@@ -27,7 +27,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
 
     queryset = models.Category.objects.all()
     serializer_class = serializers.CategorySerializer
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -35,7 +35,7 @@ class UserViewSet(viewsets.ModelViewSet):
 
     queryset = models.User.objects.all()
     serializer_class = serializers.UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
 
 
 class BookCategoryViewSet(viewsets.ModelViewSet):
@@ -43,7 +43,7 @@ class BookCategoryViewSet(viewsets.ModelViewSet):
 
     queryset = models.BookCategory.objects.all()
     serializer_class = serializers.BookCategorySerializer
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
 
 
 class UserHistoryViewSet(viewsets.ModelViewSet):
@@ -51,4 +51,4 @@ class UserHistoryViewSet(viewsets.ModelViewSet):
 
     queryset = models.UserHistory.objects.all()
     serializer_class = serializers.UserHistorySerializer
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
