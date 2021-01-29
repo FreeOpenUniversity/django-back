@@ -84,10 +84,12 @@ WSGI_APPLICATION = 'dbackend.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-DATABASES = {
+sqlite= 'django.db.backends.sqlite3'
+postgres = 'django.db.backends.postgresql_psycopg2'
+engine = postgres if os.environ.get('USE_POSTGRES') else sqlite
+DATABASES =  {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': engine,
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }

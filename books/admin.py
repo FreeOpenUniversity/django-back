@@ -58,7 +58,7 @@ admin.site.register(User, UserAdmin)
 
 class BookCategoryAdmin(admin.ModelAdmin):
     form = BookCategoryAdminForm
-    list_display = ['book', 'category', 'user']
+    list_display = ['book', 'category']
     readonly_fields = []
 
 admin.site.register(BookCategory, BookCategoryAdmin)
