@@ -6,7 +6,7 @@ class Book(Model):
   title=CharField(max_length=128)
   url=URLField()
   author=CharField(max_length=128)
-  category=ManyToManyField('Category', through='BookCategory')
+  categories=ManyToManyField('Category', through='BookCategory', related_name="books")
 
 class Category(Model):
   name=CharField(max_length=128)
@@ -20,7 +20,7 @@ class User(Model):
 class BookCategory(Model):
   book=ForeignKey(Book, on_delete=CASCADE)
   category=ForeignKey(Category, on_delete=CASCADE)
-  user=ForeignKey(User, on_delete=CASCADE)
+  # user=ForeignKey(User, on_delete=CASCADE)
 
 class UserHistory(Model):
   progress=IntegerField()
