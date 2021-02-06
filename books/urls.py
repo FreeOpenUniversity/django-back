@@ -15,4 +15,5 @@ router.register(r'userhistory', api.UserHistoryViewSet)
 urlpatterns = (
     # urls for Django Rest Framework API
     path('api/', include(router.urls)),
+    path("api/search", views.search, name="search")
 )
