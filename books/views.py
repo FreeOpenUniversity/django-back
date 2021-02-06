@@ -1,8 +1,10 @@
 # https://www.django-rest-framework.org/api-guide/viewsets/
 
+from books.semanticSearch import handleQuestion
 from rest_framework import viewsets
 from .serializers import *
 from .models import *
+from django.http import HttpResponse
 
 class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
@@ -23,3 +25,7 @@ class BookCategoryViewSet(viewsets.ModelViewSet):
 class UserHistoryViewSet(viewsets.ModelViewSet):
     queryset = UserHistory.objects.all()
     serializer_class = UserHistorySerializer
+
+def search(request):
+    question  = request.GET["question"]
+    return HttpResponse(handleQuestion(question), content_type="application/json")
