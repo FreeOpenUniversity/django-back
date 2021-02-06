@@ -16,8 +16,7 @@
   },
   "BookCategory": {
     "book": "references",
-    "category": "references",
-    "user": "references"
+    "category": "references"
   },
   "UserHistory": {
     "progress": "integer",
