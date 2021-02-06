@@ -30,7 +30,7 @@ class UserSerializer(ModelSerializer):
 class BookCategorySerializer(ModelSerializer):
   class Meta:
       model = BookCategory
-      fields = ('id','book','category','user')
+      fields = ('id','book','category')
 
 
 class UserHistorySerializer(ModelSerializer):
