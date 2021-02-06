@@ -1,5 +1,5 @@
 import functools
-from sentence_transformers import SentenceTransformer, CrossEncoder, util
+from sentence_transformers import SentenceTransformer, util # CrossEncoder, 
 import time
 import os
 import pandas as pd
@@ -16,7 +16,7 @@ entry_count = 5600 #5600 alt
 sentences_path = f'staticfiles/Book_{entry_count}.csv'
 index_path = "./hnswlib.index"
 # cross-encoder to improve quality
-cross_encoder=CrossEncoder('cross-encoder/ms-marco-TinyBERT-L-6')
+# cross_encoder=CrossEncoder('cross-encoder/ms-marco-TinyBERT-L-6')
 embedding_cache_path = f"staticfiles/embeddings_{entry_count}.pkl"
 # load database
 @functools.cache
@@ -60,10 +60,10 @@ def handleQuestionFactory(db, embeddings):
     s_results = util.semantic_search(q_embedding,embeddings,top_k=top_k)
     results   = pd.DataFrame(s_results[0], columns=["corpus_id","score"])
     # sort/score results with the cross-encoder:
-    cross_inp = db.iloc[results.corpus_id][["question","Overview"]].to_numpy().tolist()
-    cross_sco=cross_encoder.predict(cross_inp, show_progress_bar=True)
-    results['cross_score']=cross_sco
-    results = results.sort_values("cross_score", ascending=True)
+    # cross_inp = db.iloc[results.corpus_id][["question","Overview"]].to_numpy().tolist()
+    # cross_sco=cross_encoder.predict(cross_inp, show_progress_bar=True)
+    # results['cross_score']=cross_sco
+    # results = results.sort_values("cross_score", ascending=True)
     end = time.time()
     results.duration = end-start
     return pd.merge(results,db,"inner",left_on="corpus_id", right_index=True).to_json()
