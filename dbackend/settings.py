@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
-import dj_database_url
+# import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,9 +27,9 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1','idc-back.herokuapp.com']
+ALLOWED_HOSTS = ['66.76.242.195','0.0.0.0', 'localhost', '127.0.0.1','idc-back.herokuapp.com']
 
 
 # Application definition
@@ -89,12 +89,15 @@ postgres = 'django.db.backends.postgresql_psycopg2'
 engine = postgres if os.environ.get('USE_POSTGRES') else sqlite
 DATABASES =  {
     'default': {
+   	'NAME': 'django_back',
+        'USER': 'django',
+        'PASSWORD': 'pleasant red mist',
+        'HOST': 'localhost',
+        'PORT': '',
         'ENGINE': engine,
-        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -139,5 +142,5 @@ STATIC_ROOT = os.path.join(BASE_DIR,'static')
 # location where you will store your static files
 
 # Configure Django App for Heroku.
-import django_heroku
-django_heroku.settings(locals())
+# import django_heroku
+# django_heroku.settings(locals())

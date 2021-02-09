@@ -4,3 +4,4 @@ __pycache__
 __pycache__/
 *.py[cod]
 *.sqlite3
+Python-3.9.0
