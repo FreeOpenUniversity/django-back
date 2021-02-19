@@ -1,5 +1,5 @@
 import functools
-from sentence_transformers import SentenceTransformer, util # CrossEncoder, 
+from sentence_transformers import SentenceTransformer, util, CrossEncoder
 import time
 import os
 import pandas as pd
@@ -66,7 +66,7 @@ def handleQuestionFactory(db, embeddings):
     # results = results.sort_values("cross_score", ascending=True)
     end = time.time()
     results.duration = end-start
-    return pd.merge(results,db,"inner",left_on="corpus_id", right_index=True).to_json()
+    return pd.merge(results,db,"inner",left_on="corpus_id", right_index=True).to_json(orient="record")
     # corpus_ids, distances = index.knn_query(q_embedding, k=top_k)
     # hits = [{'corpus_id': id, 'score': 1-score} for id, score in zip(corpus_ids[0], distances[0])]
     # hits = pd.DataFrame(sorted(hits, key=lambda x: x['score'], reverse=True))
