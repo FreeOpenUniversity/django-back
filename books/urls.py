@@ -6,11 +6,11 @@ from . import api
 from . import views
 
 router = routers.DefaultRouter()
-router.register(r'book', api.BookViewSet)
-router.register(r'category', api.CategoryViewSet)
-router.register(r'user', api.UserViewSet)
-router.register(r'bookcategory', api.BookCategoryViewSet)
-router.register(r'userhistory', api.UserHistoryViewSet)
+router.register(r'books', api.BookViewSet)
+router.register(r'categories', api.CategoryViewSet)
+router.register(r'users', api.UserViewSet)
+router.register(r'book_categories', api.BookCategoryViewSet)
+router.register(r'user_histories', api.UserHistoryViewSet)
 
 urlpatterns = (
     # urls for Django Rest Framework API
