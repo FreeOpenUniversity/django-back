@@ -1,6 +1,20 @@
+# Source: https://djangowaves.com/tips-tricks/gitignore-for-a-django-project/
+
+
+# Django #
+*.log
+*.pot
+*.pyc
+db.sqlite3
+media
+
 __pycache__
 **/*.pyc
 *.pyc
 __pycache__/
 *.py[cod]
 *.sqlite3
+
+
+# Visual Studio Code # 
+**/.vscode/
